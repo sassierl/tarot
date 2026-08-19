@@ -23,7 +23,7 @@ const (
 	Eight
 	Nine
 	Ten
-	Page
+	Jack
 	Knight
 	Queen
 	King
@@ -34,4 +34,56 @@ type Card struct {
 	Suit   Suit
 	Rank   Rank
 	Oudler bool
+}
+
+func (s Suit) String() string {
+	switch s {
+	case Diamonds:
+		return "Diamonds"
+	case Hearts:
+		return "Hearts"
+	case Clubs:
+		return "Clubs"
+	case Spades:
+		return "Spades"
+	case Trump:
+		return "Trump"
+	default:
+		return "Unknown"
+	}
+}
+
+func (r Rank) String() string {
+	switch r {
+	case Ace:
+		return "Ace"
+	case Two:
+		return "Two"
+	case Three:
+		return "Three"
+	case Four:
+		return "Four"
+	case Five:
+		return "Five"
+	case Six:
+		return "Six"
+	case Seven:
+		return "Seven"
+	case Eight:
+		return "Eight"
+	case Nine:
+		return "Nine"
+	case Ten:
+		return "Ten"
+	case Jack:
+		return "Jack"
+	case Kight:
+		return "Knight"
+	case Queen:
+		return "Queen"
+	case King:
+		return "King"
+	default:
+		return "Unknown"
+	}
 }
