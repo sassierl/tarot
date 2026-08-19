@@ -12,9 +12,17 @@ func NewDeck() *Deck {
 	for _, suit := range AllSuits() {
 		if suit != Trump {
 			for i := 0; i < 14; i++ {
-				deck.cards[i] = Card{Suit: suit; Rank: i + 1, Oudler: false}
-				deck.cards[i].Name =
+				card := Card{
+					Suit:   suit,
+					Rank:   Rank(i + 1),
+					Oudler: false,
+				}
+
+				card.Name = card.Rank.String() + " of " + card.Suit.String()
+				deck.cards = append(deck.cards, card)
 			}
+		} else {
+			// TODO: finish this
 		}
 	}
 	return deck
