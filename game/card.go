@@ -88,3 +88,7 @@ func (r Rank) String() string {
 		return "Unknown"
 	}
 }
+
+func AllSuits() []Suit {
+	return []Suit{Diamonds, Hearts, Clubs, Spades, Trump}
+}
