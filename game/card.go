@@ -34,6 +34,7 @@ type Card struct {
 	Suit   Suit
 	Rank   Rank
 	Oudler bool
+	Number int // Only for trump card
 }
 
 func (s Suit) String() string {
@@ -77,7 +78,7 @@ func (r Rank) String() string {
 		return "Ten"
 	case Jack:
 		return "Jack"
-	case Kight:
+	case Knight:
 		return "Knight"
 	case Queen:
 		return "Queen"
