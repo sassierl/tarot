@@ -26,10 +26,7 @@ func NewDeck() *Deck {
 		} else {
 			// Case Trump
 			for i := range 22 {
-				oudler := false
-				if i == 0 || i == 1 || i == 21 {
-					oudler := true
-				}
+				oudler := i == 0 || i == 1 || i == 21 // These are the value where we set the oudler
 				card := Card{
 					Suit:   suit,
 					Rank:   0,
