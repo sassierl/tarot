@@ -1,5 +1,7 @@
 package game
 
+import "strconv"
+
 type Deck struct {
 	cards []Card
 }
@@ -22,7 +24,22 @@ func NewDeck() *Deck {
 				deck.cards = append(deck.cards, card)
 			}
 		} else {
-			// TODO: finish this
+			// Case Trump
+			for i := range 22 {
+				oudler := false
+				if i == 0 || i == 1 || i == 21 {
+					oudler := true
+				}
+				card := Card{
+					Suit:   suit,
+					Rank:   0,
+					Oudler: oudler,
+					Number: i,
+				}
+
+				card.Name = card.Suit.String() + " number " + strconv.Itoa(card.Number)
+				deck.cards = append(deck.cards, card)
+			}
 		}
 	}
 	return deck
