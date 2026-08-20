@@ -18,7 +18,7 @@ func NewDeck() *Deck {
 
 	for _, suit := range AllSuits() {
 		if suit != Trump {
-			for i := 0; i < 14; i++ {
+			for i := range 14 {
 				card := Card{
 					Suit:   suit,
 					Rank:   Rank(i + 1),

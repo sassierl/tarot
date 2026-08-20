@@ -29,13 +29,14 @@ func main() {
 	// Test Shuffle
 	deck.Shuffle()
 	fmt.Println("Deck shuffled!\n")
-	deck.PrintDeck()
 
+	player := game.NewPlayer("Louis")
 	// Test Deal
-	hand := deck.Deal(5)
-	fmt.Printf("Dealt %d cards\n", len(hand))
+	player.Hand = deck.Deal(5)
+	fmt.Println(player.Name)
+	fmt.Printf("Dealt %d cards\n", len(player.Hand))
 	for i := range 5 {
-		fmt.Println(hand[i])
+		fmt.Println(player.Hand[i])
 	}
 }
 
