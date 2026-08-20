@@ -24,15 +24,19 @@ func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeigh
 
 func main() {
 	deck := game.NewDeck()
-	fmt.Printf("Deck has %d cards\n", len(deck.cards))
+	fmt.Printf("Deck has %d cards\n", len(deck.Cards))
 
-	// // Test Shuffle
-	// deck.Shuffle()
-	// fmt.Println("Deck shuffled!")
+	// Test Shuffle
+	deck.Shuffle()
+	fmt.Println("Deck shuffled!\n")
+	deck.PrintDeck()
 
-	// // Test Deal
-	// hand := deck.Deal(5)
-	// fmt.Printf("Dealt %d cards\n", len(hand))
+	// Test Deal
+	hand := deck.Deal(5)
+	fmt.Printf("Dealt %d cards\n", len(hand))
+	for i := range 5 {
+		fmt.Println(hand[i])
+	}
 }
 
 // old main for ebiten

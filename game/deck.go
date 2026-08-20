@@ -1,14 +1,19 @@
 package game
 
-import "strconv"
+import (
+	"fmt"
+	"math/rand/v2"
+	"slices"
+	"strconv"
+)
 
 type Deck struct {
-	cards []Card
+	Cards []Card
 }
 
 func NewDeck() *Deck {
 	deck := &Deck{
-		cards: []Card{},
+		Cards: []Card{},
 	}
 
 	for _, suit := range AllSuits() {
@@ -21,7 +26,7 @@ func NewDeck() *Deck {
 				}
 
 				card.Name = card.Rank.String() + " of " + card.Suit.String()
-				deck.cards = append(deck.cards, card)
+				deck.Cards = append(deck.Cards, card)
 			}
 		} else {
 			// Case Trump
@@ -35,9 +40,26 @@ func NewDeck() *Deck {
 				}
 
 				card.Name = card.Suit.String() + " number " + strconv.Itoa(card.Number)
-				deck.cards = append(deck.cards, card)
+				deck.Cards = append(deck.Cards, card)
 			}
 		}
 	}
 	return deck
+}
+
+func (d *Deck) Shuffle() {
+	rand.Shuffle(len(d.Cards), func(i, j int) { d.Cards[i], d.Cards[j] = d.Cards[j], d.Cards[i] })
+}
+
+func (d *Deck) Deal(n int) []Card {
+	deckLength := len(d.Cards)
+	hand := slices.Clone(d.Cards[deckLength-n:])
+	slices.Delete(d.Cards, deckLength-n, deckLength)
+	return hand
+}
+
+func (d *Deck) PrintDeck() {
+	for i := range len(d.Cards) {
+		fmt.Println(d.Cards[i])
+	}
 }
